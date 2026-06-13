@@ -52,10 +52,13 @@ body{
 .stats{
     margin-top:20px;
     display:inline-block;
-    padding:10px 18px;
+    padding:12px 20px;
     border-radius:999px;
     background:rgba(255,255,255,.1);
     backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.1);
+    color:#e2e8f0;
+    font-weight:600;
 }
 
 .games{
@@ -68,10 +71,8 @@ body{
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.12);
     backdrop-filter:blur(15px);
-
     border-radius:28px;
     padding:30px;
-
     transition:.3s;
 }
 
@@ -97,20 +98,15 @@ body{
 
 .play-btn{
     display:inline-block;
-
     text-decoration:none;
     color:white;
-
     padding:14px 25px;
     border-radius:999px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #3b82f6,
-    #8b5cf6
+    background:linear-gradient(
+        135deg,
+        #3b82f6,
+        #8b5cf6
     );
-
     transition:.3s;
 }
 
@@ -155,14 +151,21 @@ body{
     .game-icon{
         font-size:55px;
     }
+
+    .stats{
+        display:block;
+        line-height:1.8;
+    }
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
     <div class="header">
+
         <div class="logo">🎮</div>
 
         <h1>Fun Game Hub</h1>
@@ -171,9 +174,10 @@ body{
             Totally Serious Scientific Experiments
         </p>
 
-        <div class="stats" id="gameCount">
-            🎯 Loading...
-        </div>    
+        <div class="stats" id="stats">
+            Loading statistics...
+        </div>
+
     </div>
 
     <div class="games">
@@ -182,7 +186,7 @@ body{
 
             <div class="game-icon">🌈</div>
 
-            <h2>Are You Gay?</h2>
+            <h2>Scientific Survey</h2>
 
             <p>
                 The most accurate survey ever created.
@@ -219,15 +223,15 @@ body{
             <h2>Roast Generator</h2>
 
             <p>
-            Enter your name and let our AI
-            generate a completely unnecessary
-            and scientifically inaccurate roast.
+                Enter your name and let our AI
+                generate a completely unnecessary
+                and scientifically inaccurate roast.
             </p>
-        
+
             <a href="games/roast-generator.html" class="play-btn">
                 Play Now
             </a>
-        
+
         </div>
 
     </div>
@@ -239,15 +243,10 @@ body{
         <div class="tags">
 
             <div class="tag">🔥 How Cooked Are You?</div>
-
             <div class="tag">🐹 Animal Detector</div>
-
             <div class="tag">🧠 Personality Test</div>
-
             <div class="tag">🎯 Catch The Button</div>
-
             <div class="tag">🧟 Zombie Survival</div>
-
             <div class="tag">🚩 Red Flag Detector</div>
 
         </div>
@@ -259,16 +258,33 @@ body{
     </div>
 
 </div>
+
 <script>
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const totalGames =
         document.querySelectorAll(".games .card").length;
 
-    document.getElementById("gameCount").innerHTML =
-        `🎯 ${totalGames} Games Available`;
+    const victims =
+        Math.floor(Math.random() * 9000) + 1000;
+
+    const accuracy =
+        Math.floor(Math.random() * 10) + 91;
+
+    const iq =
+        Math.floor(Math.random() * 30) + 70;
+
+    document.getElementById("stats").innerHTML =
+        `🎯 ${totalGames} Games Available |
+         👤 ${victims.toLocaleString()} Victims |
+         🧠 ${accuracy}% Scientifically Accurate |
+         🤓 IQ: ${iq}`;
 
 });
+
 </script>
+
 </body>
 </html>
+```
