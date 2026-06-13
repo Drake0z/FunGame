@@ -1,223 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Important Question</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Game Hub</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Inter, Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    min-height:100vh;
+    padding:30px 20px;
+
     background:
-        radial-gradient(circle at top left, #ff7eb3, transparent 35%),
-        radial-gradient(circle at bottom right, #7afcff, transparent 35%),
-        linear-gradient(135deg, #111827, #1f2937);
-    overflow: hidden;
-    padding: 20px;
-    color: white;
+    radial-gradient(circle at top left,#ff6ec7 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#00f5ff 0%,transparent 35%),
+    linear-gradient(135deg,#0f172a,#1e293b);
+
+    color:white;
 }
 
-.card {
-    width: 100%;
-    max-width: 430px;
-    padding: 35px 25px;
-    border-radius: 28px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.13);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+.container{
+    max-width:1200px;
+    margin:auto;
 }
 
-.badge {
-    display: inline-block;
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    margin-bottom: 22px;
-    background: rgba(255, 255, 255, 0.18);
+.header{
+    text-align:center;
+    margin-bottom:50px;
 }
 
-h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    margin-bottom: 12px;
+.logo{
+    font-size:70px;
+    margin-bottom:10px;
 }
 
-.subtitle {
-    color: #d1d5db;
-    font-size: 15px;
-    margin-bottom: 35px;
+.header h1{
+    font-size:clamp(2.5rem,8vw,4rem);
 }
 
-.buttons {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    min-height: 130px;
-    align-items: center;
+.header p{
+    margin-top:10px;
+    color:#cbd5e1;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    padding: 15px 34px;
-    font-size: 18px;
-    border-radius: 999px;
-    font-weight: 700;
-    transition: 0.25s ease;
+.stats{
+    margin-top:20px;
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
 }
 
-#yesBtn {
-    background: linear-gradient(135deg, #22c55e, #86efac);
-    color: #052e16;
-    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
-    z-index: 2;
+.games{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
 }
 
-#noBtn {
-    background: rgba(255, 255, 255, 0.14);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    z-index: 3;
+.card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+
+    border-radius:28px;
+    padding:30px;
+
+    transition:.3s;
 }
 
-#noBtn:active,
-#yesBtn:active {
-    transform: scale(0.96);
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
 }
 
-.success-page {
-    display: none;
+.game-icon{
+    font-size:65px;
+    margin-bottom:15px;
 }
 
-.success-page h1 {
-    color: #86efac;
+.card h2{
+    margin-bottom:10px;
 }
 
-.success-page p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #e5e7eb;
-    margin-top: 20px;
+.card p{
+    color:#d1d5db;
+    line-height:1.5;
+    margin-bottom:25px;
 }
 
-.emoji {
-    font-size: 55px;
-    margin-bottom: 15px;
+.play-btn{
+    display:inline-block;
+
+    text-decoration:none;
+    color:white;
+
+    padding:14px 25px;
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #8b5cf6
+    );
+
+    transition:.3s;
+}
+
+.play-btn:hover{
+    transform:scale(1.05);
+}
+
+.coming-soon{
+    margin-top:50px;
+}
+
+.coming-soon h2{
+    margin-bottom:20px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tag{
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.footer{
+    text-align:center;
+    margin-top:60px;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+    .card{
+        padding:25px;
+    }
+
+    .game-icon{
+        font-size:55px;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="card" id="questionPage">
-    <div class="badge">Very serious survey</div>
+<div class="container">
 
-    <h1>Are you gay? 🤨</h1>
+    <div class="header">
+        <div class="logo">🎮</div>
 
-    <p class="subtitle">
-        Choose wisely. The button knows the truth.
-    </p>
+        <h1>Fun Game Hub</h1>
 
-    <div class="buttons">
-        <button id="yesBtn">Yes</button>
-        <button id="noBtn">No</button>
+        <p>
+            Totally Serious Scientific Experiments
+        </p>
+
+        <div class="stats">
+            🎯 2 Games Available
+        </div>
     </div>
+
+    <div class="games">
+
+        <div class="card">
+
+            <div class="game-icon">🌈</div>
+
+            <h2>Are You Gay?</h2>
+
+            <p>
+                The most accurate survey ever created.
+                Peer reviewed by absolutely nobody.
+            </p>
+
+            <a href="survey.html" class="play-btn">
+                Play Now
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <div class="game-icon">👨‍⚖️</div>
+
+            <h2>AI Judge</h2>
+
+            <p>
+                Upload your face and let our
+                highly questionable AI judge your aura.
+            </p>
+
+            <a href="aijudge.html" class="play-btn">
+                Play Now
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="coming-soon">
+
+        <h2>🚧 Coming Soon</h2>
+
+        <div class="tags">
+
+            <div class="tag">💀 Roast Generator</div>
+
+            <div class="tag">🔥 How Cooked Are You?</div>
+
+            <div class="tag">🐹 Animal Detector</div>
+
+            <div class="tag">🧠 Personality Test</div>
+
+            <div class="tag">🎯 Catch The Button</div>
+
+            <div class="tag">🧟 Zombie Survival</div>
+
+            <div class="tag">🚩 Red Flag Detector</div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Made for entertainment purposes only 😂
+    </div>
+
 </div>
-
-<div class="card success-page" id="successPage">
-    <div class="emoji">🎉</div>
-    <h1>Congratulations!</h1>
-    <p>
-        You tried to deny it...<br>
-        but the truth finally won. 💀😂<br><br>
-        Thank you for completing this very scientific survey.
-    </p>
-</div>
-
-<script>
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const questionPage = document.getElementById("questionPage");
-const successPage = document.getElementById("successPage");
-
-let yesScale = 1;
-let noScale = 1;
-let noClicks = 0;
-
-function isMobile() {
-    return window.innerWidth < 768;
-}
-
-function moveNoButton() {
-    const padding = 15;
-
-    noBtn.style.position = "fixed";
-
-    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-
-    const randomX = Math.max(padding, Math.random() * maxX);
-    const randomY = Math.max(padding, Math.random() * maxY);
-
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-}
-
-if (!isMobile()) {
-    noBtn.addEventListener("mouseover", moveNoButton);
-}
-
-noBtn.addEventListener("click", () => {
-    noClicks++;
-
-    yesScale += 0.3;
-    yesBtn.style.transform = `scale(${yesScale})`;
-
-    noScale -= 0.07;
-
-    if (noScale < 0.35) {
-        noScale = 0.35;
-    }
-
-    noBtn.style.transform = `scale(${noScale})`;
-
-    const messages = [
-        "Nice try 😏",
-        "Still no? 🤨",
-        "Think again 👀",
-        "Wrong answer 😂",
-        "Try Yes instead 💚",
-        "No is shrinking 💀"
-    ];
-
-    noBtn.innerText =
-        messages[Math.min(noClicks - 1, messages.length - 1)];
-
-    if (noClicks >= 7) {
-        yesBtn.style.position = "fixed";
-        yesBtn.style.left = "50%";
-        yesBtn.style.top = "50%";
-        yesBtn.style.transform = "translate(-50%, -50%) scale(4)";
-    }
-});
-
-yesBtn.addEventListener("click", () => {
-    questionPage.style.display = "none";
-    successPage.style.display = "block";
-});
-</script>
 
 </body>
 </html>
