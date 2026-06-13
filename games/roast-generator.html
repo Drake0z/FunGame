@@ -1,0 +1,271 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roast Generator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+    radial-gradient(circle at top left,#ff6ec7 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#ff7b00 0%,transparent 35%),
+    linear-gradient(135deg,#0f172a,#1e293b);
+
+    color:white;
+}
+
+.home-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+
+    text-decoration:none;
+    color:white;
+
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+
+    padding:10px 16px;
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.card{
+    width:100%;
+    max-width:550px;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border-radius:30px;
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ef4444,
+        #f97316
+    );
+}
+
+.loading{
+    display:none;
+    text-align:center;
+    margin-top:25px;
+}
+
+.result{
+    display:none;
+    margin-top:25px;
+}
+
+.stat{
+    background:rgba(255,255,255,.08);
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+.final-roast{
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(239,68,68,.15);
+    border:1px solid rgba(239,68,68,.3);
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<a href="../index.html" class="home-btn">
+🏠 Home
+</a>
+
+<div class="card">
+
+    <h1>💀 Roast Generator</h1>
+
+    <div class="subtitle">
+        Our AI has absolutely no qualifications.
+    </div>
+
+    <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+    >
+
+    <button onclick="generateRoast()">
+        Generate Roast
+    </button>
+
+    <div class="loading" id="loading">
+        🤖 Scanning embarrassing moments...
+        <br><br>
+        Checking browser history...
+        <br><br>
+        Contacting your enemies...
+    </div>
+
+    <div class="result" id="result">
+
+        <div class="stat" id="gaming"></div>
+        <div class="stat" id="brain"></div>
+        <div class="stat" id="wealth"></div>
+        <div class="stat" id="fitness"></div>
+
+        <div class="final-roast" id="roast"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const roasts = [
+
+"Your WiFi has a stronger connection than your life goals.",
+
+"You look like you ask ChatGPT to tie your shoes.",
+
+"If laziness was a sport you'd still come second.",
+
+"Your NPC energy is off the charts.",
+
+"You bring everyone together... against you.",
+
+"You have something nobody can take away from you. Unfortunately it's your awkwardness.",
+
+"You could hide your own Easter eggs.",
+
+"You look like your passwords are 'password123'.",
+
+"You are proof that auto-correct doesn't fix everything.",
+
+"Your last braincell is working overtime.",
+
+"You fight sleep and still lose.",
+
+"You have the confidence of someone who didn't read the instructions."
+
+];
+
+function random(max){
+    return Math.floor(Math.random()*max);
+}
+
+function generateRoast(){
+
+    const loading =
+    document.getElementById("loading");
+
+    const result =
+    document.getElementById("result");
+
+    loading.style.display="block";
+    result.style.display="none";
+
+    setTimeout(()=>{
+
+        loading.style.display="none";
+
+        document.getElementById("gaming")
+        .innerHTML =
+        `🎮 Gaming Skill: ${[
+            "Bronze Forever",
+            "NPC Difficulty",
+            "Keyboard Warrior",
+            "Tutorial Boss",
+            "Accidentally Good"
+        ][random(5)]}`;
+
+        document.getElementById("brain")
+        .innerHTML =
+        `🧠 Braincells Remaining: ${
+            random(10)+1
+        }`;
+
+        document.getElementById("wealth")
+        .innerHTML =
+        `💰 Bank Account: RM ${
+            (Math.random()*50).toFixed(2)
+        }`;
+
+        document.getElementById("fitness")
+        .innerHTML =
+        `🏃 Fitness Level: ${
+            [
+                "Loading...",
+                "Needs Update",
+                "Low Battery",
+                "Offline",
+                "Surprisingly Alive"
+            ][random(5)]
+        }`;
+
+        document.getElementById("roast")
+        .innerHTML =
+        `<b>FINAL VERDICT</b><br><br>${
+            roasts[random(roasts.length)]
+        }`;
+
+        result.style.display="block";
+
+    },3000);
+}
+</script>
+
+</body>
+</html>
+```
