@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Judge</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+    radial-gradient(circle at top left,#ff6ec7 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#00f5ff 0%,transparent 35%),
+    linear-gradient(135deg,#0f172a,#1e293b);
+
+    color:white;
+}
+
+.home-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+    padding:10px 16px;
+    border-radius:999px;
+}
+
+.card{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border-radius:28px;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+input[type="file"]{
+    background:white;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+}
+
+.preview{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    display:none;
+    margin:20px auto;
+    border:3px solid white;
+}
+
+.loading{
+    display:none;
+    text-align:center;
+    margin-top:25px;
+}
+
+.result{
+    display:none;
+    margin-top:25px;
+}
+
+.stat{
+    background:rgba(255,255,255,.08);
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+.verdict{
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    text-align:center;
+    font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<a href="../index.html" class="home-btn">🏠 Home</a>
+
+<div class="card">
+
+    <h1>👨‍⚖️ AI Judge</h1>
+
+    <div class="subtitle">
+        Let AI judge your aura.
+    </div>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <input type="file" id="imageInput" accept="image/*">
+
+    <img id="preview" class="preview">
+
+    <button onclick="analyze()">
+        Analyze Me
+    </button>
+
+    <div class="loading" id="loading">
+        🤖 Scanning face...<br><br>
+        Detecting aura...
+    </div>
+
+    <div class="result" id="result">
+
+        <div class="stat" id="npc"></div>
+        <div class="stat" id="rizz"></div>
+        <div class="stat" id="brain"></div>
+        <div class="stat" id="main"></div>
+
+        <div class="verdict" id="verdict"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const preview = document.getElementById("preview");
+
+document.getElementById("imageInput")
+.addEventListener("change",(e)=>{
+
+    const file = e.target.files[0];
+
+    if(file){
+
+        preview.src =
+        URL.createObjectURL(file);
+
+        preview.style.display="block";
+    }
+});
+
+const verdicts = [
+
+"Bro is cooked 💀",
+
+"Certified NPC 🗿",
+
+"Main Character Energy Detected ✨",
+
+"Professional Yap Master 🎤",
+
+"Built Different 🔥",
+
+"Suspiciously Silly 🤨",
+
+"Too Powerful For Society ⚡",
+
+"Rare Specimen Found 🧬",
+
+"Average Discord User 🎮",
+
+"Touch Grass Immediately 🌱"
+
+];
+
+function random(max){
+    return Math.floor(Math.random()*max);
+}
+
+function analyze(){
+
+    const loading =
+    document.getElementById("loading");
+
+    const result =
+    document.getElementById("result");
+
+    loading.style.display="block";
+    result.style.display="none";
+
+    setTimeout(()=>{
+
+        loading.style.display="none";
+
+        document.getElementById("npc")
+        .innerHTML =
+        `🗿 NPC Level: ${random(101)}%`;
+
+        document.getElementById("rizz")
+        .innerHTML =
+        `😎 Rizz Level: ${random(101)}%`;
+
+        document.getElementById("brain")
+        .innerHTML =
+        `🧠 Braincells: ${1+random(999)}`;
+
+        document.getElementById("main")
+        .innerHTML =
+        `✨ Main Character Energy: ${random(101)}%`;
+
+        document.getElementById("verdict")
+        .innerHTML =
+        verdicts[random(verdicts.length)];
+
+        result.style.display="block";
+
+    },3000);
+}
+</script>
+
+</body>
+</html>
