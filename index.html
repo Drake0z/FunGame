@@ -171,9 +171,9 @@ body{
             Totally Serious Scientific Experiments
         </p>
 
-        <div class="stats">
-            🎯 2 Games Available
-        </div>
+        <div class="stats" id="gameCount">
+            🎯 Loading...
+        </div>    
     </div>
 
     <div class="games">
@@ -259,6 +259,16 @@ body{
     </div>
 
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    const totalGames =
+        document.querySelectorAll(".games .card").length;
+
+    document.getElementById("gameCount").innerHTML =
+        `🎯 ${totalGames} Games Available`;
+
+});
+</script>
 </body>
 </html>
